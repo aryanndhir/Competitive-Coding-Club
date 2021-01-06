@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+	<style>
+
+        body {
+            background-color: #f0f2f5;
+            margin-top: 8%;
+            margin-left: 22%;
+            position: relative;
+            display: block;
+        }
+
+        img {
+            border-radius: 20px;
+            height: 100px;
+            width: 100px;
+        }
+
+        .img-text {
+            font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 32px;
+            width: 500px;
+        }
+
+        form {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+            color: #1c1e21;
+        }
+
+        .block1 {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .block2 {
+            height: 456px;
+            width: 396px;
+        }
+
+        .block3 {
+            padding-bottom: 24px;
+            padding-top: 10px;
+            text-align: center;
+            align-items: center;
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            box-sizing: border-box;
+            margin: 40px 0 0;
+            padding: 20px 0 28px;
+            width: 396px;
+        }
+
+        .block4 {
+            box-sizing: border-box;
+            margin-right: 0;
+            padding-right: 32px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .text1 {
+            font-size: 17px;
+            width: 364px;
+            margin: auto;
+            padding: 6px 0;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        .button1 {
+            background-color: #1877f2;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            line-height: 48px;
+            padding: 0 16px;
+            width: 332px;
+            color: white;
+        }
+
+    </style> 
+</head>
+<body>
+        <div class = "block4">
+		<h1><a href="home.html"><img src="images/ccc.png" alt="CCC"
+            width="20px" height="20px"></a></h1>
+        
+        <div class="img-text">
+        We help you get better at competitve coding and improve your chances of<br>
+        getting a job.
+        </div>
+        </div>
+        
+        <div class = "block1">
+            <div class = "block2">
+                <div class = "block3">
+
+		<form action="http://localhost/WPProject/register.php" method="POST">
+            <div class = "text1">
+            <input type="text" name="fname" id="fname" placeholder="First Name" autofocus="1" autocomplete="off">
+            </div>
+            <br><br>
+            <div class = "text1">
+            <input type="text" name="lname" id="lname"  placeholder="Last Name" autocomplete="off">
+            </div>
+            <br><br>
+            <div class = "text1">
+            <input type="email" id="email" name="email" placeholder="Email address" autocomplete="off">
+            </div>
+            <br><br><br>
+            <input type="number" name="score" id="score" placeholder="CodeChef Rating" autocomplete="off" min="0">
+            <br><br><br>
+			<input type="radio" id="male" name="gender" value="Male">
+			<label for="male">Male</label>
+			<input type="radio" id="female" name="gender" value="Female">
+			<label for="female">Female</label>
+			<input type="radio" id="prefer not to say" name="gender" value="Prefer not to say">
+			<label for="other">Prefer not to say</label><br><br>
+            <br><br>
+			<input type="submit" name="submit" class="button1" value="Register" onclick="return validateForm()">
+		</form>
+        </div></div></div>
+
+	<script>  
+		function validateForm(){  
+			var fname=document.getElementById("fname").value; 
+			var lname=document.getElementById("lname").value;
+			var email=document.getElementById("email").value;
+            var score=document.getElementById("score").value;
+
+			const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+			if (fname==null || fname==""){  
+				alert("Error: First name cannot be blank");  
+				return false;  
+			}
+			else if (lname==null || lname==""){  
+				alert("Error: Last name cannot be blank");  
+				return false;  
+			}
+			else if (!re.test(String(email).toLowerCase())){
+			    alert("Error: Enter a valid e-mail id");
+			    return false;
+			}
+            else if (score.length==0){
+                alert("Error: Score cannot be blank");
+                return false;
+            }
+			
+			var x1 = document.getElementsByName("gender");
+	        var c1=0;
+	        for(var i=0;i<x1.length;i++)
+			{
+				if(x1[i].checked==false)
+					c1++;
+   			}
+   			if(c1==x1.length)
+   			{
+       			alert("Error: One button must be selected for gender");
+       			return false;
+   			}
+
+			return true;
+	    }
+	</script>
+
+</body>
+</html>
